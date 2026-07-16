@@ -11,7 +11,9 @@ button{
 }
 /* 헤더 css 시작 */
 header {
+  position: fixed;
   display: flex;
+  width: 100%;
   height: 4.375rem;
   /* border: 1px solid #000; */
   background-color: #fff;
@@ -65,7 +67,7 @@ header .logoAndlogin .login,
   align-items: center;
 }
 .section01 .wrap-section01 .section01-img {
-  background-image: url(./Images/section01IMG.png);
+  background-image: url(/15-sprint-mission-fe/Images/section01IMG.png);
   width: 46.625rem;
   height: 21.25rem;
   /* border: 1px solid #000; */
@@ -124,7 +126,7 @@ header .logoAndlogin .login,
   padding: 0 1.9375rem;
 }
 .section02-img {
-  background-image: url(/SprintMission/Mission_01/Images/section02IMG.png);
+  background-image: url(./Images/section02IMG.png);
   max-width: 100%;
   width: 36.75rem;
   height: 27.75rem;
@@ -182,7 +184,7 @@ header .logoAndlogin .login,
   padding: 0 0.6rem;
 }
 .section03-img {
-  background-image: url(/SprintMission/Mission_01/Images/section03IMG.png);
+  background-image: url(./Images/section03IMG.png);
   max-width: 100%;
   width: 36.75rem;
   height: 27.75rem;
@@ -242,7 +244,7 @@ header .logoAndlogin .login,
   align-items: center;
 }
 .section04-img {
-  background-image: url(/SprintMission/Mission_01/Images/section04IMG.png);
+  background-image: url(./Images/section04IMG.png);
   max-width: 100%;
   width: 36.75rem;
   height: 27.75rem;
