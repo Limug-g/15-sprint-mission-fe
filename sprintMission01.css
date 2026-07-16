@@ -6,7 +6,7 @@
 body {
   background-color: #fcfcfc;
 }
-button{
+button {
   font-family: "Pretendard";
 }
 /* 헤더 css 시작 */
@@ -67,7 +67,7 @@ header .logoAndlogin .login,
   align-items: center;
 }
 .section01 .wrap-section01 .section01-img {
-  background-image: url(/15-sprint-mission-fe/Images/section01IMG.png);
+  background-image: url(./Images/section01IMG.png);
   width: 46.625rem;
   height: 21.25rem;
   /* border: 1px solid #000; */
