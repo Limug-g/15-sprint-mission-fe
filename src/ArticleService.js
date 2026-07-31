@@ -30,4 +30,23 @@ async function getArticle(articleId) {
 }
 getArticle(6700);
 
+//POST 메소드 이용 : createArticle 만들기-> 게시글 생성하기
+async function createArticle() {
+  const response = await fetch(`${BASE_URL}/articles`, 
+    {method: "POST",
+      headers : {"Content-Type": "application/json"},
+      body: JSON.stringify({
+        image : "https://example.com/...",
+        content: "게시글 내용입니다.: 상품 상태 양호합니다.",
+        title: "상품 상태 양호"
+      }),
+    });
 
+  if (!response.ok) {
+    throw new Error(`HTTP 에러: ${response.statusText}`);
+  }
+
+  const result = await response.json();
+  console.log(result);
+}
+createArticle();
