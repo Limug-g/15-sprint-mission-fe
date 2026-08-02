@@ -1,7 +1,7 @@
 //ProductService API 링크를 가져와서 CRUD 메소드를 함수로 작성해보기
 const BASE_URL = "https://panda-market-api-crud.vercel.app/products";
 
-//GET 메소드 이용 : getArticleList 만들기-> 게시글 전체 조회
+//GET 메소드 이용 : getProductList 만들기-> 상품목록 전체 조회
 // async function getProductList({
 //   page = 1,
 //   pageSize = 10,
@@ -26,11 +26,41 @@ const BASE_URL = "https://panda-market-api-crud.vercel.app/products";
 // }
 // getProductList();
 
-//GET 메소드 이용 : getArticle 만들기-> 특정 게시글 조회
-async function getProduct(productId) {
+//GET 메소드 이용 : getProduct 만들기-> 특정 상품 조회
+// async function getProduct(productId) {
+//   try {
+//     const response = await fetch(`${BASE_URL}/${productId}`, {
+//       method: "GET",
+//     });
+
+//     if (!response.ok) {
+//       throw new Error(`HTTP 에러: ${response.statusText}`);
+//     }
+
+//     const result = await response.json();
+//     console.log(result);
+//   } catch (error) {
+//     console.log("상품을 찾을 수 없습니다.: ", error.message);
+//   }
+// }
+// getProduct(4106);
+
+// //POST 메소드 이용 : createProduct 만들기-> 상품목록 생성하기
+async function createProduct() {
   try {
-    const response = await fetch(`${BASE_URL}/${productId}`, {
-      method: "GET",
+    const response = await fetch(`${BASE_URL}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        images: ["https://example.com/..."],
+        tags: ["완구"],
+        //image와 tag 키 값은 여러 요소를 담을 수도 있으므로
+        //배열 형태로 작성한다.
+        //그리고 body 안에 작성하는 키 값들은 정해져 있는 것이다.
+        price: 125000,
+        description: "string",
+        name: "Pikachu_toy",
+      }),
     });
 
     if (!response.ok) {
@@ -40,36 +70,10 @@ async function getProduct(productId) {
     const result = await response.json();
     console.log(result);
   } catch (error) {
-    console.log("상품을 찾을 수 없습니다.: ", error.message);
+    console.log("상품 목록을 생성할 수 없습니다.: ", error.message);
   }
 }
-getProduct(4106);
-
-// //POST 메소드 이용 : createArticle 만들기-> 게시글 생성하기
-// async function createArticle() {
-//   try {
-//     const response = await fetch(`${BASE_URL}/articles`, {
-//       method: "POST",
-//       headers: { "Content-Type": "application/json" },
-//       body: JSON.stringify({
-//         image: "https://example.com/...",
-//         content: "게시글 내용입니다.: 상품 상태 양호합니다.",
-//         title: "상품 상태 양호",
-//       }),
-//     });
-
-//     if (!response.ok) {
-//       throw new Error(`HTTP 에러: ${response.statusText}`);
-//     }
-
-//     const result = await response.json();
-//     console.log(`응답 성공! ${response.status}: ${response.statusText}`);
-//     console.log(result);
-//   } catch (error) {
-//     console.log("게시글을 생성할 수 없습니다.: ", error.message);
-//   }
-// }
-// createArticle();
+createProduct();
 
 //PATCH 메소드로 patchArticle()만들기-> 게시글 수정
 // async function patchArticle(articleId) {
