@@ -2,7 +2,7 @@
 const BASE_URL = "https://panda-market-api-crud.vercel.app";
 
 //GET 메소드 이용 : getArticleList 만들기-> 게시글 전체 조회
-function getArticleList({
+export function getArticleList({
   page = 1,
   pageSize = 10,
   orderBy = "recent",
@@ -26,10 +26,10 @@ function getArticleList({
       console.log("게시글을 조회하지 못했습니다.: ", error.message);
     });
 }
-getArticleList();
+// getArticleList();
 
-// //GET 메소드 이용 : getArticle 만들기-> 특정 게시글 조회
-function getArticle(articleId) {
+//GET 메소드 이용 : getArticle 만들기-> 특정 게시글 조회
+export function getArticle(articleId) {
   return fetch(`${BASE_URL}/articles/${articleId}`, {
     method: "GET",
   })
@@ -47,10 +47,10 @@ function getArticle(articleId) {
       console.log("게시글을 찾을 수 없습니다.: ", error.message);
     });
 }
-getArticle(6736);
+// getArticle(6736);
 
 // // // //POST 메소드 이용 : createArticle 만들기-> 게시글 생성하기
-function createArticle() {
+export function createArticle() {
   return fetch(`${BASE_URL}/articles`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -74,10 +74,10 @@ function createArticle() {
       console.log("게시글을 생성할 수 없습니다.: ", error.message);
     });
 }
-createArticle();
+// createArticle();
 
 // //PATCH 메소드로 patchArticle()만들기-> 게시글 수정
-function patchArticle(articleId) {
+export function patchArticle(articleId) {
   return fetch(`${BASE_URL}/articles/${articleId}`, {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
@@ -101,10 +101,10 @@ function patchArticle(articleId) {
       console.log("게시글을 수정할 수 없습니다.: ", error.message);
     });
 }
-patchArticle(6755);
+// patchArticle(6755);
 
 // // DELETE 메소드로 게시글 지우기
-function deleteArticle(articleId) {
+export function deleteArticle(articleId) {
   return fetch(`${BASE_URL}/articles/${articleId}`, {
     method: "DELETE",
   })
@@ -122,4 +122,13 @@ function deleteArticle(articleId) {
       console.log("삭제 실패:", error.message);
     });
 }
-deleteArticle(6760);
+// deleteArticle(6760);
+
+const articleFunction = {
+  getArticleList,
+  getArticle,
+  createArticle,
+  patchArticle,
+  deleteArticle,
+};
+export default articleFunction;
