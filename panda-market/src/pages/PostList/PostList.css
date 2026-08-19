@@ -7,6 +7,7 @@
   column-gap: 24px;
   row-gap: 40px;
 }
+
 .postListHeader {
   display: flex;
   justify-content: space-between;
