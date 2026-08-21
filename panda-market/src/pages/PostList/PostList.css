@@ -1,6 +1,14 @@
 /* .postListcontainer{
   width: 1200px;
 } */
+.productWrap {
+  /* border: 1px solid #000; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 26px 0 140px;
+}
+
 .postListcontainer ul {
   display: grid;
   grid-template-columns: repeat(5, 1fr);

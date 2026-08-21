@@ -1,0 +1,129 @@
+.registerWrap {
+  /* border: 1px solid #000; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 26px 0 140px;
+}
+.registerContainer {
+  width: 1200px;
+}
+.Header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1017px;
+  align-self: stretch;
+  margin-bottom: 24px;
+  /* background-color: #adfffcd1; */
+
+  & h2 {
+    flex-shrink: 0;
+    color: var(--Secondary-800, #1f2937);
+
+    /* pretendard/xl-20px-bold */
+    font-family: Pretendard;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 32px; /* 160% */
+  }
+  & .registerBtn {
+    flex-shrink: 0;
+    display: flex;
+    height: 42px;
+    padding: 12px 23px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 8px;
+    background: var(--Cool-Gray-400, #9ca3af);
+  }
+}
+.registerForm {
+  & * {
+    width: 100%;
+  }
+  & .itemName,
+  .description,
+  .price,
+  .tag {
+    margin-bottom: 16px;
+
+    color: var(--Secondary-800, #1f2937);
+    /* pretendard/2lg-18px-bold */
+    font-family: Pretendard;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 26px; /* 144.444% */
+  }
+  & #itemName,
+  #description,
+  #price,
+  #tag {
+    margin-bottom: 32px;
+    border: none;
+    border-radius: 12px;
+    background: var(--Cool-Gray-100, #f3f4f6);
+    outline: none;
+    transition: all 0.2s;
+  }
+
+  & .itemName {
+    align-self: stretch;
+  }
+  & #itemName {
+    display: flex;
+    height: 56px;
+    padding: 16px 24px;
+    align-items: flex-start;
+    gap: 10px;
+    align-self: stretch;
+    outline: none;
+  }
+  & #itemName::placeholder,
+  #description::placeholder,
+  #price::placeholder,
+  #tag::placeholder {
+    color: var(--Secondary-400, #9ca3af);
+
+    /* pretendard/lg-16px-regular */
+    font-family: Pretendard;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px; /* 162.5% */
+  }
+  & #description {
+    display: flex;
+    height: 282px;
+    padding: 16px 24px;
+    align-items: flex-start;
+    gap: 10px;
+    resize: none;
+  }
+  & #price {
+    display: flex;
+    height: 56px;
+    padding: 16px 24px;
+    align-items: flex-start;
+    gap: 10px;
+    align-self: stretch;
+  }
+  & #tag {
+    display: flex;
+    height: 56px;
+    margin-bottom: 0;
+    padding: 16px 24px;
+    align-items: flex-start;
+    gap: 10px;
+    align-self: stretch;
+  }
+  & #itemName:focus,
+  #description:focus,
+  #price:focus,
+  #tag:focus {
+    box-shadow: inset 1px 1px 8px 3px rgba(202, 201, 201, 0.905);
+  }
+}
