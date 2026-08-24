@@ -1,9 +1,10 @@
-const API_URL = 'https://panda-market-api.vercel.app';
+// const API_URL = 'https://panda-market-api.vercel.app';
+const API_URL = 'http://localhost:5001';
 
 //GET
 export const fetchPosts = async (page, limits, orderBy='recent', keyword = '') => {
   const response = await fetch(
-    `${API_URL}/products?page=${page}&pageSize=${limits}&orderBy=${orderBy}&keyword=${keyword}`,
+    `${API_URL}/items?page=${page}&pageSize=${limits}&orderBy=${orderBy}&keyword=${keyword}`,
   );
 
   if (!response.ok) {
