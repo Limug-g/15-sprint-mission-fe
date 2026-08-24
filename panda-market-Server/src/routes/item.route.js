@@ -1,23 +1,69 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import { Item } from '../models/item.model.js';
-import { HttpException } from '../error/http-exception.js';
 import { BadRequestException } from '../error/Bad-request-excep.js';
 import { ConflictException } from '../error/Conflict-excep.js';
 import { NotFoundException } from '../error/Not-found-excep.js';
 
 export const itemRouter = express.Router();
 
-itemRouter.get('/', async (req, res) => {
-  const itemLists = await Item.find();
+//GET 목록 조회
+// itemRouter.get('/', async (req, res) => {
+//   const itemLists = await Item.find();
 
-  res.status(200).json({
+//   res.status(200).json({
+//     success: true,
+//     data: {
+//       itemLists,
+//     },
+//     message: '상품 목록 조회 성공',
+//   });
+// });
+
+//GET Refactor
+itemRouter.get('/', async (req, res, next) => {
+  try {
+    const {
+      page = 1,
+      limits = 10,
+      orderBy = 'recent',
+      keyword = '',
+    } = req.query;
+
+    const offset = (Number(page) - 1) * Number(limits);
+
+    const filter = keyword
+      ? {
+          $or: [
+            {
+              name: { $regex: keyword, $options: 'i' },
+            },
+            {
+              description: { $regex: keyword, $options: 'i' },
+            },
+          ],
+        }
+      : {};
+
+      const sortOption = orderBy === 'recent'?{createdAt: -1}:{};
+
+      const itemLists = await Item.find(filter).
+      sort(sortOption).
+      skip(offset).
+      limit(Number(limits));
+
+      const totalCount = await Item.countDocuments(filter);
+
+      res.status(200).json({
     success: true,
-    data: {
-      itemLists,
-    },
+    list: itemLists,
+    totalCount,
     message: '상품 목록 조회 성공',
   });
+
+  } catch (error) {
+    next(error);
+  }
 });
 
 //GET 상세 조회
