@@ -60,6 +60,7 @@
   font-style: normal;
   font-weight: 600;
   line-height: 26px; /* 162.5% */
+  text-decoration: none;
   cursor: pointer;
   transition: 0.2s;
 }

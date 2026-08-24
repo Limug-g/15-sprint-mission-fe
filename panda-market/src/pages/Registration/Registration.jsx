@@ -3,6 +3,11 @@ import { Nav } from '../../Components/Nav/Nav';
 import './Registration.css'
 
 export const Registration = () => {
+
+  const hadleRegister = () => {
+    
+  }
+
   return (
     <>
       <Nav />

@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { SearchBar } from '../../Components/SearchBar';
 import { Nav } from '../../Components/Nav/Nav';
 import { Footer } from '../../Components/Footer/Footer';
+import { Link } from 'react-router';
 
 const ITEMS_PER_PAGE = 10;
 
@@ -38,7 +39,8 @@ export function PostList() {
             <div className="listHandle">
               {/* 검색  컴포넌트 */}
               <SearchBar onSearch={setKeyword} />
-              <div className="register">상품 등록하기</div>
+              <Link className="register" to="/registration">상품 등록하기</Link>
+              {/* <div className="register">상품 등록하기</div> */}
               <select
                 className="dropDown"
                 value={orderBy}
