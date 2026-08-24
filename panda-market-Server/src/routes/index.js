@@ -1,4 +1,7 @@
+//여기는 기능별 route들을 연결하는 허브 역할
+
 import express from 'express';
+import { itemRouter } from './Item.route.js';
 
 export const router = express.Router();
 
@@ -9,3 +12,7 @@ router.get('/', (req, res) => {
     timestamp: new Date().toISOString(),
   });
 });
+
+//기능별 router 연결하기 -> item.router
+router.use('/items', itemRouter);
+
