@@ -21,15 +21,18 @@ export const useValidation = ({ itemName, description, price, tags }) => {
     errors.price = '가격은 1자 이상, 숫자여야 합니다.';
   }
 
-  if (tags.length > 5 || !tags) {
-    errors.tags = '태그는 5글자 이내로 작성해주세요';
+  if (tags.length > 0 || !tags) {
+    const fiveLetterTag = tags.some((tag) => tag.length > 5);
+    if (fiveLetterTag) {
+      errors.tags = '태그는 5글자 이내로 작성해주세요';
+    }
   }
   const isOkay =
     Object.keys(errors).length === 0 &&
     itemName &&
     description &&
     price &&
-    tags;
+    tags.length > 0;
 
   return { errors, isOkay };
 };
