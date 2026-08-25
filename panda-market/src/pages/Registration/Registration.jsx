@@ -49,7 +49,7 @@ export const Registration = () => {
         name: itemName,
         description,
         price: Number(price),
-        tags: tags,
+        tags,
       });
 
       //등록 성공 후 상세페이지로 이동 -> useNavigate()
