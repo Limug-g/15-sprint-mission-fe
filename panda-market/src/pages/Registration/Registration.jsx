@@ -2,9 +2,10 @@ import { Footer } from '../../Components/Footer/Footer';
 import { Nav } from '../../Components/Nav/Nav';
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
-import './Registration.css';
 import { createPosts } from '../../api/posts';
 import { useValidation } from '../../hook/useValidation';
+import './Registration.css';
+import iconX from '../../assets/ic_X.svg';
 
 export const Registration = () => {
   const [itemName, setItemName] = useState('');
@@ -20,14 +21,21 @@ export const Registration = () => {
     description,
     price,
     tags,
+    tagInput,
   });
 
   //Enter키 누르면 태그 저장
   const handleTagkeydown = (event) => {
+    if (event.nativeEvent.isComposing) {
+    return; 
+  }
+  //한글 조합시 글자가 중복되서 엔터가 되는 걸 막음
+
     if (event.key === 'Enter') {
       const trimTag = tagInput.trim();
 
       if (trimTag === '') return;
+      if (trimTag.length > 5) return;
       if (tags.includes(trimTag)) {
         setTagInput('');
         return;
@@ -112,24 +120,24 @@ export const Registration = () => {
             />
             {errors.price && <p className="errorMessage">{errors.price}</p>}
             <div className="tag">태그</div>
-            <input
-              id="tag"
-              className={errors.tags ? 'notOkay' : ''}
-              type="text"
-              placeholder="태그를 입력해주세요"
-              value={tagInput}
-              onChange={(event) => setTagInput(event.target.value)}
-              onKeyDown={handleTagkeydown}
-            />
-            <div className="tagChip">
+            <div className="tagChipwrapper">
+              <input
+                id="tag"
+                className={errors.tags ? 'notOkay' : ''}
+                type="text"
+                placeholder="태그를 입력해주세요"
+                value={tagInput}
+                onChange={(event) => setTagInput(event.target.value)}
+                onKeyDown={handleTagkeydown}
+              />
+              {errors.tags && <p className="errorMessage">{errors.tags}</p>}
               {tags.map((tag) => (
                 <span key={tag} className="tagChip">
                   {`#${tag}`}
-                  <button onClick={() => handleDeleteTag(tag)}>x</button>
+                  <img src={iconX} onClick={() => handleDeleteTag(tag)}></img>
                 </span>
               ))}
             </div>
-            {errors.tags && <p className="errorMessage">{errors.tags}</p>}
           </div>
         </div>
       </section>

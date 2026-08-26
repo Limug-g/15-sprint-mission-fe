@@ -51,7 +51,6 @@
     line-height: 26px; /* 162.5% */
   }
   & .registerBtn:active {
-    box-shadow: 0 0 5px 3px #aad0fe;
     background: #2662ad;
     transform: translateY(2px);
     color: #122339;
@@ -148,21 +147,42 @@
   #tag:focus {
     box-shadow: inset 1px 1px 8px 3px rgba(202, 201, 201, 0.905);
   }
-}
-#itemName.notOkay,
-#description.notOkay,
-#price.notOkay,
-#tag.notOkay {
-  border: 1px solid var(--error-red, #f74747);
-}
-.errorMessage {
-  color: var(--error-red, #f74747);
 
-  /* pretendard/lg-14px-semibold */
-  font-family: Pretendard;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 24px; /* 171.429% */
-  margin-left: 16px;
+  .tagChip {
+    display: inline-flex;
+    width: auto;
+    height: 36px;
+    margin-top: 14px;
+    margin-right: 12px;
+    padding: 6px 12px 6px 16px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 26px;
+    background: var(--Cool-Gray-100, #f3f4f6);
+
+    & img {
+      width: 20px;
+      height: auto;
+      cursor: pointer;
+    }
+  }
+  #itemName.notOkay,
+  #description.notOkay,
+  #price.notOkay,
+  #tag.notOkay {
+    border: 1px solid var(--error-red, #f74747);
+  }
+  .errorMessage {
+    color: var(--error-red, #f74747);
+
+    /* pretendard/lg-14px-semibold */
+    font-family: Pretendard;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px; /* 171.429% */
+    margin-left: 16px;
+  }
 }

@@ -7,21 +7,15 @@ nav {
   padding: 20px 200px;
   border-bottom: 1px solid #dfdfdf;
   background: #fff;
-  /* margin-bottom: 26px; */
 }
 nav .navContainer {
   display: flex;
-  width: 893px;
   align-items: center;
   gap: 24px;
-  flex-shrink: 0;
+  margin: 0 auto;
 }
 .navContainer .logoImg {
   display: flex;
-  /* width: 153px;
-  height: 51px; */
-  /* background-image: url(../../assets/pandamarketlogo.png);
-  background-repeat: no-repeat; */
   padding: 5.017px 0 5.848px 0;
   justify-content: center;
   align-items: flex-end;
@@ -52,6 +46,7 @@ nav .login {
 }
 .goBoard,
 .secondShop {
+  flex-shrink: 0;
   color: var(--Secondary-600, #4b5563);
   text-align: center;
   cursor: pointer;
