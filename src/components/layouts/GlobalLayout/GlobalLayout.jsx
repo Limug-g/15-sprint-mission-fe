@@ -14,11 +14,14 @@ export default function GlobalLayout({ children }) {
               className={styles.logoImg}
               src={logo}
               alt="#logo"
-              width={153}
-              height={51}
+              width="auto"
+              height="auto"
+              loading="eager"
             />
           </Link>
-          <Link href='/articles' className={styles.goBoard}>자유게시판</Link>
+          <Link href="/articles" className={styles.goBoard}>
+            자유게시판
+          </Link>
           <Link className={styles.secondShop} href="/items">
             중고마켓
           </Link>
