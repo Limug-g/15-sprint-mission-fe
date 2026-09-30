@@ -1,5 +1,5 @@
 import { BestArticle } from '@/components/BestArticle';
-import { RecentArticle } from '@/components/RecentArticle';
+import { ArticleSection } from '@/components/ArticleSection';
 
 import * as styles from '@/styles/article.css.js'
 
@@ -19,7 +19,7 @@ export default async function articles() {
           <div>검색바 자리</div>
           <div>드롭다운</div>
         </div>
-        <RecentArticle />
+        <ArticleSection />
       </section>
       
     </div>

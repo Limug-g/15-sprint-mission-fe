@@ -1,8 +1,8 @@
 import { ArticleList } from "@/components/ArticleList";
 
-export const RECENT_ARTICLE_LIMIT = 4;
+export const ARTICLE_LIMIT = 4;
 
-async function getRecentArticle() {
+async function getArticleSection() {
   const response = await fetch(`${process.env.API_URL}/api/articles`);
 
   if (!response.ok) {
@@ -11,15 +11,14 @@ async function getRecentArticle() {
   return response.json();
 }
 
-export default function RecentArticle() {
-  const recentPromise = getRecentArticle();
+export default function ArticleSection() {
+  const recentPromise = getArticleSection();
   return (
     <section>
       <div>
-        {console.log("넘기기 직전:", recentPromise)}
         <ArticleList
           articlePromise={recentPromise}
-          limit={RECENT_ARTICLE_LIMIT}
+          limit={ARTICLE_LIMIT}
           className = 'list'
         />
       </div>
