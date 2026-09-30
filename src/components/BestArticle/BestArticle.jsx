@@ -1,6 +1,6 @@
 import { ArticleList } from "@/components/ArticleList";
+import { BEST_ARTICLE_LIMIT } from "@/constants/article";
 
-export const BEST_ARTICLE_LIMIT = 3;
 
 async function getBestArticle(){
   const response = await fetch(`${process.env.API_URL}/api/articles`);
