@@ -1,4 +1,4 @@
-import { ArticleList } from "../ArticleList";
+import { ArticleList } from "@/components/ArticleList";
 
 
 export const RECENT_ARTICLE_LIMIT = 4;
@@ -17,16 +17,8 @@ export default function RecentArticle(){
 
   return (
     <section>
+        
         <div>
-          <div>게시글</div>
-          <button>글쓰기</button>
-        </div>
-        <div>
-          <div>검색바 자리</div>
-          <div>드롭다운</div>
-        </div>
-        <div>
-          <div>게시글 페이지입니다.</div>
           <ArticleList 
           recentPromise={recentPromise}
           limit={RECENT_ARTICLE_LIMIT} />
