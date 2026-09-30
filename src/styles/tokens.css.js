@@ -2,7 +2,7 @@ import { createGlobalTheme } from "@vanilla-extract/css";
 
 export const tokens = createGlobalTheme(":root", {
   color: {
-    primaryColor: "#2F80ED",
+    primaryColor: "#3692FF",
     primaryColorHover: "#5495e9",
     backgroundColor: "#f3f4f6",
     articleBackground: '#fcfcfc',

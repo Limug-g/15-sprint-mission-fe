@@ -1,14 +1,45 @@
 import { tokens } from "@/styles/tokens.css";
 import { style } from "@vanilla-extract/css";
 
-export const container = style({
+export const listContainer = style({
   display: "flex",
   flexDirection: "column",
   borderBottom: `1px solid ${tokens.color.borderColor}`,
   backgroundColor: tokens.color.articleBackground,
   width: "100%",
   marginBottom: '24px',
+  paddingBottom: '24px',
 });
+
+export const cardContainer = style({
+  display: "flex",
+  flexDirection: "column",
+  borderBottom: `1px solid ${tokens.color.borderColor}`,
+  borderRadius: '8px',
+  backgroundColor: tokens.color.articleBackground,
+  padding: '0 24px',
+});
+
+export const bestSticker = style({
+  backgroundColor: tokens.color.primaryColor,
+  color: 'white',
+  width: '25%',
+  padding: '2px 24px',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'cetner',
+  gap: '4px',
+  marginBottom: '18px',
+
+  /* pretendard/xl-20px-semibold */
+  fontFamily: "Pretendard",
+  fontSize: "16px",
+  fontStyle: "normal",
+  fontWeight: "600",
+  lineHeight: "26px",
+
+  borderRadius: '0 0 16px 16px',
+})
 
 export const header = style({
   display: "flex",
@@ -42,7 +73,6 @@ export const defaultImg = style({
 export const info = style({
   display: "flex",
   justifyContent: "space-between",
-  marginBottom: "24px",
 });
 
 export const userInfo = style({

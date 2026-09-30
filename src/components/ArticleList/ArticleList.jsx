@@ -1,17 +1,19 @@
 "use client";
 
 import { use } from "react";
-import { ArticleItem } from "../ArticleItem";
+import { ArticleItem } from "@/components/ArticleItem";
+import * as styles from './ArticleList.css'
 
-export default function ArticleList({ recentPromise, limit }) {
-  const recentArticles = use(recentPromise);
-  console.log("결과 ", recentArticles);
+export default function ArticleList({ articlePromise, limit, className }) {
+  const articles = use(articlePromise);
+  console.log("결과 ", articles);
+  const listVariant = className === 'list' ? '' : styles.cardContainer;
 
   return (
-    <>
-      {recentArticles.slice(0, limit).map((recent) => (
-        <ArticleItem key={recent.id} {...recent} />
+    <div className={listVariant}>
+      {articles.slice(0, limit).map((article) => (
+        <ArticleItem key={article.id} {...article} className={className} />
       ))}
-    </>
+    </div>
   );
 }

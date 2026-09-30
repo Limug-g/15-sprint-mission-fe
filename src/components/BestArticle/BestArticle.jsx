@@ -1,14 +1,28 @@
-export const RECENT_ARTICLE_LIMIT = 4;
+import { ArticleList } from "@/components/ArticleList";
 
-async function getRecentArticle(){
+export const BEST_ARTICLE_LIMIT = 3;
+
+async function getBestArticle(){
   const response = await fetch(`${process.env.API_URL}/api/articles`);
 
   if(!response.ok){
-    throw new Error('최신 게시글을 불러오지 못했습니다.');
+    throw new Error('인기 게시글을 불러오지 못했습니다.');
   }
   return response.json();
 }
 
 export default function BestArticle(){
-  return <div>베스트게시글입니다.</div>
+  const bestPromise = getBestArticle();
+
+  return (
+      <section>
+          <div>
+            <ArticleList 
+            articlePromise={bestPromise}
+            limit={BEST_ARTICLE_LIMIT}
+            className = 'card'
+            />
+          </div>
+        </section>
+    )
 }
