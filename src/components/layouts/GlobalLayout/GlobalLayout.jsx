@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export default function GlobalLayout({ children }) {
   return (
-    <>
+    <div className={styles.Wrapper}>
       <nav className={styles.nav}>
         <div className={styles.navContainer}>
           <Link href="/" className={styles.logoLink}>
@@ -30,8 +30,8 @@ export default function GlobalLayout({ children }) {
           <div>로그인</div>
         </div>
       </nav>
-      {children}
+      <div className={styles.main}>{children}</div>
       <Footer />
-    </>
+    </div>
   );
 }

@@ -1,5 +1,11 @@
 import { style } from "@vanilla-extract/css";
 
+export const Wrapper = style({
+  display: "flex",
+  flexDirection: "column",
+  minHeight: "100vh",
+});
+
 export const nav = style({
   display: "flex",
   justifyContent: "space-between",
@@ -49,6 +55,10 @@ export const login = style({
   lineHeight: "26px" /* 162.5% */,
 });
 
+export const main = style({
+  flex: 1,
+});
+
 const commonCss = style({
   flexShrink: 0,
   color: "var(--Secondary-600, #4b5563)",
@@ -63,3 +73,5 @@ const commonCss = style({
 });
 export const goBoard = style([commonCss]);
 export const secondShop = style([commonCss, { marginLeft: "1rem" }]);
+
+

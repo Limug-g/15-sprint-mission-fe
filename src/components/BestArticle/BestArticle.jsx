@@ -1,6 +1,6 @@
 import { ArticleList } from "@/components/ArticleList";
 import { BEST_ARTICLE_LIMIT } from "@/constants/article";
-
+import * as styles from './BestArticle.css'
 
 async function getBestArticle(){
   const response = await fetch(`${process.env.API_URL}/api/articles`);
@@ -15,7 +15,7 @@ export default function BestArticle(){
   const bestPromise = getBestArticle();
 
   return (
-      <section>
+      <section className={styles.container}>
           <div>
             <ArticleList 
             articlePromise={bestPromise}

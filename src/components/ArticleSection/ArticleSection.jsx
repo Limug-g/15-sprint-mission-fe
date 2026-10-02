@@ -1,5 +1,6 @@
 import { ArticleSearch } from "@/components/ArticleSearch/";
 import * as styles from './ArticleSection.css'
+import Link from "next/link";
 
 async function getArticleSection() {
   // const response = await fetch(`/api/articles`);
@@ -17,7 +18,7 @@ export default function ArticleSection() {
     <section>
       <div className={styles.articleHeader}>
         <div className={styles.title}>게시글</div>
-        <button className={styles.writeBtn}>글쓰기</button>
+        <Link href={'/articles/registration'} className={styles.writeBtn}>글쓰기</Link>
       </div>
       <div>
         <ArticleSearch articlePromise={articlePromise} />
