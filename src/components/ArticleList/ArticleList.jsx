@@ -8,6 +8,7 @@ export default function ArticleList({
   articlePromise,
   limit,
   keyword,
+  sortBy,
   className,
 }) {
   const articles = use(articlePromise);
@@ -18,9 +19,16 @@ export default function ArticleList({
     ? articles.filter((a) => a.title.includes(keyword))
     : articles;
 
+  const sorted = [...filtered].sort((a, b) => {
+    if(sortBy === 'best'){
+      return new Date(a.createdAt) - new Date(b.createdAt)
+    }
+    return new Date(b.createdAt) - new Date(a.createdAt)
+  })
+
   return (
     <div className={listVariant}>
-      {filtered.slice(0, limit).map((article) => (
+      {sorted.slice(0, limit).map((article) => (
         <ArticleItem key={article.id} {...article} className={className} />
       ))}
     </div>
