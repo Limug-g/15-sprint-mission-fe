@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import * as styles from './SearchBar.css.js';
 
 export default function SearchBar({ onSearch }) {
   const [input, setInput] = useState("");
@@ -19,6 +20,7 @@ export default function SearchBar({ onSearch }) {
         value={input} //-> 검색창에 보여지는 값
         placeholder="검색할 상품을 입력하세요"
         onChange={(event) => setInput(event.target.value)}
+        className={styles.searchBar}
       />
     </>
   );

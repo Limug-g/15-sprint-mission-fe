@@ -10,13 +10,13 @@ export default function DropDown({ onSortChange }) {
   const [sortBy, setSortBy] = useState("recent");
 
   const handleSelect = (event) => {
-    const nowSelect = event.target.dataset.value;
+    const nowSelect = event.currentTarget.dataset.value;
     setSortBy(nowSelect);
     setIsOpen(false);
     onSortChange(nowSelect);
   };
   return (
-    <div>
+    <div className={styles.dropDownWrap}>
       <button
         className={isOpen ? styles.openDrop : styles.dropdown}
         onClick={() => setIsOpen((prev) => !prev)}
@@ -25,17 +25,17 @@ export default function DropDown({ onSortChange }) {
         <Image src={downArrow} alt="downArrow" />
       </button>
       {isOpen && (
-        <ul>
+        <ul className={styles.dropMenus}>
           <li
             className={styles.menuA}
-            data-nowselect="recent"
+            data-value="recent"
             onClick={handleSelect}
           >
             최신순
           </li>
           <li
             className={styles.menuB}
-            data-nowselect="best"
+            data-value="best"
             onClick={handleSelect}
           >
             인기순

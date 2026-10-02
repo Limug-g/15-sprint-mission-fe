@@ -4,6 +4,7 @@ import { ArticleList } from "@/components/ArticleList";
 import { SearchBar } from "@/components/Searchbar/";
 import { ARTICLE_LIMIT } from "@/constants/article";
 import { DropDown } from "@/components/DropDown";
+import * as styles from './ArticleSearch.css.js';
 
 export default function ArticleSearch({ articlePromise }) {
   const [search, setSearch] = useState("");
@@ -11,7 +12,7 @@ export default function ArticleSearch({ articlePromise }) {
 
   return (
     <>
-      <div>
+      <div className={styles.searchNdrop}>
         <SearchBar onSearch={setSearch} />
         <DropDown onSortChange={setSortBy} />
       </div>

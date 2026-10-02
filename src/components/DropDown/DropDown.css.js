@@ -1,6 +1,10 @@
 import { tokens } from "@/styles/tokens.css";
 import { style } from "@vanilla-extract/css";
 
+export const dropDownWrap = style({
+    position: 'relative',
+})
+
 export const dropdown = style({
   display: "flex",
   // flexDirection: 'column',
@@ -24,6 +28,7 @@ export const dropdown = style({
 export const openDrop = style({
   display: "flex",
   // flexDirection: 'column',
+
   width: "130px",
   height: "42px",
   padding: "12px 20px",
@@ -42,6 +47,11 @@ export const openDrop = style({
   fontWeight: "400",
   lineHeight: "26px",
 });
+
+export const dropMenus = style({
+  position: 'absolute',
+  top: '100%',
+})
 
 export const menuA = style({
   display: "flex",
