@@ -41,7 +41,7 @@ export default async function articlePage({ params }) {
       <div className="content">
         <div>{article.data.content}</div>
       </div>
-      <CommentSection commentPromise={commentPromise} />
+      <CommentSection articleId={id} commentPromise={commentPromise} />
     </section>
   );
 }

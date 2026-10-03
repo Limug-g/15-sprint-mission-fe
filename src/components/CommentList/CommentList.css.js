@@ -11,6 +11,7 @@ export const container = style({
 });
 
 export const listWrapper = style({
+  width: '100%',
   marginBottom: "64px",
 });
 
@@ -26,6 +27,7 @@ export const commentItem = style({
 
 export const header = style({
   display: "flex",
+  justifyContent: 'space-between',
   marginBottom: "24px",
 });
 

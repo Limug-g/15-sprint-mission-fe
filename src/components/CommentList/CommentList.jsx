@@ -7,17 +7,15 @@ import { ko } from "date-fns/locale";
 import Link from "next/link";
 
 export default function CommentList({ comments }) {
-  const commentList = comments.data.data;
-  console.log("댓글 목록", commentList);
-
+  console.log("데이터형태", comments);
   return (
     <section className={styles.container}>
       <ul className={styles.listWrapper}>
-        {commentList &&
-          commentList.map((comment) => (
+        {comments &&
+          comments.map((comment) => (
             <li key={comment.id} className={styles.commentItem}>
               <div className={styles.header}>
-                <div>{comment.content}</div>
+                <div className={styles.content}>{comment.content}</div>
                 <Image src={dotMenu} alt="dotMenu" className={styles.dotMenu} />
               </div>
               <div className={styles.info}>
