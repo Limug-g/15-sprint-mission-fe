@@ -1,12 +1,18 @@
 import * as styles from "@/styles/article.css.js";
+import Image from "next/image";
+import profileImg from "@/assets/ic_profile.svg";
+import heartImg from "@/assets/ic_heart.svg";
 import { notFound } from "next/navigation";
-
+import { CommentSection } from "@/components/CommentSection";
 
 export default async function articlePage({ params }) {
   const { id } = await params;
 
   const response = await fetch(`${process.env.API_URL}/api/articles/${id}`);
-  console.log('뜬거아냐?', response);
+  const resComment = await fetch(
+    `${process.env.API_URL}/api/articles/${id}/comments`,
+  );
+
   if (response.status === 404) {
     notFound(); //-> next/navigation에서 제공하는 기능
     //직접 만든 not-found.js 를 찾아준다.
@@ -16,15 +22,26 @@ export default async function articlePage({ params }) {
   }
 
   const article = await response.json();
+  const commentPromise = resComment.json();
+  console.log("게시글 내용, ", article);
 
   return (
-    <div className={styles.articleWrapper}>
-      <section>
-        <div>{id}번 게시글</div>
+    <section className={styles.articleWrapper}>
+      <div className="header">
         <div>{article.data.title}</div>
+        <div className="info">
+          <Image src={profileImg} alt="profileImg" />
+          <div>{article.data.writer.name}</div>
+          <div className="like">
+            <Image src={heartImg} alt="heartImg" />
+            999+
+          </div>
+        </div>
+      </div>
+      <div className="content">
         <div>{article.data.content}</div>
-        <div>{article.data.writer.name}</div>
-      </section>
-    </div>
+      </div>
+      <CommentSection commentPromise={commentPromise} />
+    </section>
   );
 }

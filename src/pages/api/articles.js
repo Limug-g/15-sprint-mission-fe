@@ -21,7 +21,9 @@ const API_URL = process.env.API_URL;
 export default async function handler(req, res) {
   try {
     if (!API_URL) {
-      return res.status(500).json({ error: "API_URL 환경변수가 설정되지 않았습니다." });
+      return res
+        .status(500)
+        .json({ error: "API_URL 환경변수가 설정되지 않았습니다." });
     }
 
     if (req.method === "GET") {
@@ -40,6 +42,26 @@ export default async function handler(req, res) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(req.body),
+      });
+
+      const data = await response.json();
+      return res.status(response.status).json(data);
+    }
+
+    if (req.method === "PATCH") {
+      const { articleId, ...updateData } = req.body;
+
+      if (!articleId) {
+        return res.status(400).json({ error: "articleId가 필요합니다." });
+      }
+      //백엔드 PATCH 라우터 엔드포인트에 articleId가 있으므로 
+      //API에도 articleId 포함
+      const response = await fetch(`${API_URL}/api/articles/${articleId}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updateData),
       });
 
       const data = await response.json();
