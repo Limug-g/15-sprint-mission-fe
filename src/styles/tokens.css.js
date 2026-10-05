@@ -12,6 +12,7 @@ export const tokens = createGlobalTheme(":root", {
     nameTextColor: '#4B5563',
     subtleTextColor: "#6b7280",
     borderColor: "#e5e7eb",
+    borderSecondColor: '#D1D5DB',
     dangerColor: "#dc2626",
     dangerColorHover: "#b91c1c",
   },

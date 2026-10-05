@@ -54,7 +54,7 @@ export default async function handler(req, res) {
       if (!articleId) {
         return res.status(400).json({ error: "articleId가 필요합니다." });
       }
-      //백엔드 PATCH 라우터 엔드포인트에 articleId가 있으므로 
+      //백엔드 PATCH 라우터 엔드포인트에 articleId가 있으므로
       //API에도 articleId 포함
       const response = await fetch(`${API_URL}/api/articles/${articleId}`, {
         method: "PATCH",
@@ -66,6 +66,29 @@ export default async function handler(req, res) {
 
       const data = await response.json();
       return res.status(response.status).json(data);
+    }
+
+    if (req.method === "DELETE") {
+      const { articleId } = req.body;
+
+      if (!articleId) {
+        return res.status(400).json({ error: "articleId가 필요합니다." });
+      }
+      //백엔드 DELETE 라우터 엔드포인트에 articleId가 있으므로
+      //API에도 articleId 포함
+      const response = await fetch(`${API_URL}/api/articles/${articleId}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if(response.status === 204){
+        return res.status(204).end();
+      }
+
+      // const data = await response.json();
+      // return res.status(response.status).json(data);
     }
   } catch (error) {
     console.error(error);
