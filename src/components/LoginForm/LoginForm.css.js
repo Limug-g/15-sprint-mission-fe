@@ -1,10 +1,6 @@
 import { tokens } from "@/styles/tokens.css";
 import { style } from "@vanilla-extract/css";
 
-// login.css 포팅. :root 변수 중 기존 tokens와 겹치는 건 tokens.color.*를 쓰고,
-// 이 페이지에만 쓰이는 색(간편 로그인 배경 #e6f2ff)은 그대로 하드코딩했습니다.
-const EASY_LOGIN_BG = "#e6f2ff";
-
 export const page = style({
   display: "flex",
   justifyContent: "center",
@@ -35,6 +31,12 @@ export const content = style({
   flexDirection: "column",
 });
 
+export const inputWrap = style({
+  display: "flex",
+  flexDirection: "column",
+  marginBottom: "24px",
+});
+
 export const label = style({
   fontSize: "18px",
   fontWeight: "700",
@@ -44,7 +46,6 @@ export const label = style({
 
 export const wrapPassword = style({
   position: "relative",
-  marginBottom: "24px",
 });
 
 export const hideIcon = style({
@@ -63,7 +64,6 @@ export const input = style({
   padding: "16px 24px",
   borderRadius: "12px",
   border: "none",
-  marginBottom: "24px",
   fontSize: "16px",
   fontFamily: "Pretendard",
 
@@ -80,7 +80,31 @@ export const input = style({
   },
 });
 
-export const passwordInput = style([input, { marginBottom: 0 }]);
+export const errorInput = style({
+  width: "100%",
+  boxSizing: "border-box",
+  backgroundColor: tokens.color.backgroundColor,
+  height: "56px",
+  padding: "16px 24px",
+  borderRadius: "12px",
+  outline: "none",
+  border: `1px solid ${tokens.color.dangerColor}`,
+  fontSize: "16px",
+  fontFamily: "Pretendard",
+
+  selectors: {
+    "&::placeholder": {
+      fontSize: "16px",
+      fontWeight: "400",
+      color: tokens.color.textSecondaryColor,
+    },
+    "&:focus": {
+      outline: "none",
+    },
+  },
+});
+
+// export const passwordInput = style([input]);
 
 export const submitBtn = style({
   width: "100%",
@@ -94,13 +118,20 @@ export const submitBtn = style({
   fontWeight: "600",
   fontFamily: "Pretendard",
   cursor: "pointer",
+
+  selectors: {
+    "&:disabled": {
+      backgroundColor: tokens.color.textSecondaryColor,
+      cursor: "not-allowed",
+    },
+  },
 });
 
 export const easyLogin = style({
   width: "100%",
   height: "74px",
   marginBottom: "24px",
-  backgroundColor: EASY_LOGIN_BG,
+  backgroundColor: tokens.color.subLoginbgcColor,
   borderRadius: "8px",
   padding: "16px 23px",
 });
@@ -146,4 +177,75 @@ export const bottomLink = style({
   fontWeight: "500",
   color: tokens.color.primaryColor,
   margin: "3.5px 0",
+});
+
+export const modalOverlay = style({
+  position: "fixed",
+  inset: 0,
+  backgroundColor: "rgba(0, 0, 0, 0.5)",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  zIndex: 1000,
+});
+
+export const modalBox = style({
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+  gap: "40px",
+
+  backgroundColor: tokens.color.backgroundColor,
+  borderRadius: "8px",
+  padding: "40px 32px 24px",
+  width: "540px",
+  height: "250px",
+  textAlign: "center",
+  boxShadow: "0 4px 16px rgba(0, 0, 0, 0.15)",
+});
+
+export const modalConfirmButton = style({
+  width: "100%",
+  height: "42px",
+  border: "none",
+  borderRadius: "8px",
+  background: tokens.color.primaryColor,
+  color: tokens.color.backgroundColor,
+  fontSize: "15px",
+  fontWeight: "600",
+  fontFamily: "Pretendard",
+  cursor: "pointer",
+});
+
+export const errorText = style({
+  color: tokens.color.dangerColor,
+  fontSize: "14px",
+  fontWeight: "600",
+  fontFamily: "Pretendard",
+  lineHeight: "24px",
+  marginTop: "8px",
+});
+
+export const modalMessage = style({
+    color: tokens.color.textColor,
+  fontSize: "18px",
+  fontWeight: "500",
+  fontFamily: "Pretendard",
+  lineHeight: "26px",
+})
+
+export const checkBtn = style({
+  width: "30%",
+  border: "none",
+  height: "48px",
+  padding: "12px 23px",
+  background: tokens.color.primaryColor,
+  borderRadius: "8px",
+  color: tokens.color.backgroundColor,
+  fontSize: "16px",
+  fontWeight: "600",
+  fontFamily: "Pretendard",
+  lineHeight: "26px",
+  cursor: "pointer",
 });

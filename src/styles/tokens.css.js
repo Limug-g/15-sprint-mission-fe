@@ -5,6 +5,7 @@ export const tokens = createGlobalTheme(":root", {
     primaryColor: "#3692FF",
     primaryColorHover: "#5495e9",
     backgroundColor: "#f3f4f6",
+    subLoginbgcColor: '#E6F2FF',
     articleBackground: '#fcfcfc',
     cardBackground: "#ffffff",
     textColor: "#1f2937",

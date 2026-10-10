@@ -11,7 +11,7 @@ export default function NavLanding() {
           <Image className={styles.logoImg} src={logo} alt="#logo" />
         </Link>
       </div>
-      <div className={styles.login}>로그인</div>
+      <Link href='/login' className={styles.login}>로그인</Link>
     </nav>
   );
 }
