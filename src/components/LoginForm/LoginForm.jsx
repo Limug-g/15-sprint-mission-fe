@@ -7,7 +7,7 @@ import hidePWIcon from "@/assets/hidePW.svg";
 import socialIcon from "@/assets/ic_social.svg";
 import * as styles from "./LoginForm.css.js";
 import { useState } from "react";
-import { useRouter } from "next/navigation.js";
+import { useLogin } from "./hooks/useLogin.js";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -30,46 +30,29 @@ export default function LoginForm() {
   const [inputEmail, setInputEmail] = useState("");
   const [inputpassword, setInputPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  // const router = useRouter();
-
+  const { mutate: loginMutate, isPending, isSuccess } = useLogin();
+  const isBusy = isPending || isSuccess;
   const emailError = getEmailErr(inputEmail);
   const passwordError = getPasswordErr(inputpassword);
+  const isInvalid =
+  !inputEmail.trim() || !inputpassword.trim() || !!emailError || !!passwordError;
+
+  
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setErrorMessage("");
 
-    setIsLoading(true);
-    try {
-      //api 호출
-      const response = await fetch("/api/auth/signin", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: inputEmail,
-          password: inputpassword,
-        }),
-        credentials: "include",
-      });
-
-      const data = await response.json();
-      
-      if (!response.ok) {
-        setErrorMessage(data.message ?? "로그인에 실패했습니다.");
-        setShowModal(true);
-        return;
-      }
-
-      router.push("/items");
-    } catch (error) {
-      console.log(error);
-      setErrorMessage("네트워크 오류가 발생했습니다.");
-      setShowModal(true);
-    } finally {
-      setIsLoading(false);
-    }
+    loginMutate(
+      { email: inputEmail, password: inputpassword },
+      {
+        onError: (error) => {
+          setErrorMessage(error.message);
+          setShowModal(true);
+        },
+      },
+    );
   };
   return (
     <>
@@ -122,9 +105,9 @@ export default function LoginForm() {
           <button
             type="submit"
             className={styles.submitBtn}
-            disabled={!inputEmail.trim() || !inputpassword.trim()}
+            disabled={isInvalid || isBusy}
           >
-            {isLoading ? "로그인 중 ..." : "로그인"}
+            {isBusy ? "로그인 중 ..." : "로그인"}
           </button>
 
           <div className={styles.easyLogin}>
@@ -161,9 +144,12 @@ export default function LoginForm() {
         <div className={styles.modalOverlay}>
           <div className={styles.modalBox}>
             <div className={styles.modalMessage}>{errorMessage}</div>
-            <button 
-            onClick={() => setShowModal(false)}
-            className={styles.checkBtn}>확인</button>
+            <button
+              onClick={() => setShowModal(false)}
+              className={styles.checkBtn}
+            >
+              확인
+            </button>
           </div>
         </div>
       )}

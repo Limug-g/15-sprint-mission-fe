@@ -37,3 +37,30 @@ export const login = style({
   fontWeight: "600",
   lineHeight: "26px",
 });
+
+export const userArea = style({
+  display: "flex",
+  alignItems: "center",
+  gap: "12px",
+});
+
+export const userName = style({
+  fontSize: "16px",
+  fontWeight: 500,
+});
+
+export const logoutBtn = style({
+  padding: "8px 16px",
+  borderRadius: "8px",
+  border: "1px solid #D1D5DB",
+  backgroundColor: "#fff",
+  cursor: "pointer",
+  selectors: {
+    "&:disabled": { opacity: 0.5, cursor: "not-allowed" },
+  },
+});
+
+export const authPlaceholder = style({
+  width: "88px", // 기존 로그인 버튼 크기에 맞추세요
+  height: "42px",
+});
