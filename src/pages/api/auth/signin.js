@@ -15,8 +15,8 @@ export default async function handler(req, res) {
 
       const data = await response.json();
 
-      const setCookieHeader = response.headers.get("set-cookie");
-      if (setCookieHeader) {
+      const setCookieHeader = response.headers.getSetCookie();
+      if (setCookieHeader.length) {
         res.setHeader("Set-Cookie", setCookieHeader);
       }
 

@@ -40,6 +40,7 @@ export default async function handler(req, res) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          cookie: req.headers.cookie ?? "",
         },
         body: JSON.stringify(req.body),
       });
@@ -83,7 +84,7 @@ export default async function handler(req, res) {
         },
       });
 
-      if(response.status === 204){
+      if (response.status === 204) {
         return res.status(204).end();
       }
 

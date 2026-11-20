@@ -30,7 +30,6 @@ export default function ArticlePosting() {
         body: JSON.stringify({
           title: refineTitle,
           content: refineContent,
-          writerId: 140,
         }),
       });
 

@@ -3,6 +3,7 @@ import * as styles from "./GlobalLayout.css.js";
 import { Footer } from "@/components/Footer";
 import logo from "@/assets/pandamarketlogo.png";
 import Image from "next/image";
+import { UserMenu } from "@/components/UserMenu/index.js";
 
 export default function GlobalLayout({ children }) {
   return (
@@ -26,9 +27,7 @@ export default function GlobalLayout({ children }) {
             중고마켓
           </Link>
         </div>
-        <div className={styles.login}>
-          <div>로그인</div>
-        </div>
+        <UserMenu />
       </nav>
       <div className={styles.main}>{children}</div>
       <Footer />
